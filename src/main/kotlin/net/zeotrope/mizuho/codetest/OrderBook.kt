@@ -14,7 +14,7 @@ class OrderBook {
 
     fun updateOrderSize(id: Long, size: Long) =
         orders[id]?.let {
-            orders.put(it.id, Order(it.id, it.price, it.side, size, Instant.now()))
+            orders.put(it.id, it.copy(size = size, timeStamp = Instant.now()))
         }
 
     fun bestPriceOrder(side: OrderType, level: Int): Double? {
